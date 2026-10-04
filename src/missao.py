@@ -22,17 +22,23 @@ try:
     duracaoPrevista = float(input("Digite a duração prevista da missão: "))
     consumo = float(input("Indique o consumo da bateria, em pontos percentuais: "))
     
-    consumoTotal = calculoConsumo(duracaoPrevista, consumo)
-    conclusaoPossivel = avaliaConsumo(bateriaAtual, consumoTotal)
+    #Verificação de valores da bateria, consumo e duração
+    bateriaOk = True if (bateriaAtual>= 0 and bateriaAtual <= 100) else False
+    duracaoOk = True if duracaoPrevista >= 0 else False
+    consumoOk = True if consumo >= 0 else False
     
-    if (conclusaoPossivel): 
-        
-        print("A missão \033[1;34mpode\033[0m ser concluída!")
-        print(f"Bateria restante após término da missão: \033[1;34m{bateriaRestante(bateriaAtual, consumoTotal)}%\033[0m")
+    if (not(bateriaOk and duracaoOk and consumoOk)):
+        print("\033[91mValor inválido! Verificar se os valores inseridos estão corretos\033[0m")
     else:
-        print("A missão \033[91mNÃO pode\033[0m ser concluída!")
-        print(f"A bateria necessária para concluir a missão seria de: \033[91m{(-1)*bateriaRestante(bateriaAtual, consumoTotal)}%\033[0m")
-        
+        consumoTotal = calculoConsumo(duracaoPrevista, consumo)
+        conclusaoPossivel = avaliaConsumo(bateriaAtual, consumoTotal)
+        if (conclusaoPossivel and bateriaOk and duracaoOk and consumoOk):       
+            print("A missão \033[1;34mpode\033[0m ser concluída!")
+            print(f"Bateria restante após término da missão: \033[1;34m{bateriaRestante(bateriaAtual, consumoTotal)}%\033[0m")
+        else:
+            print("A missão \033[91mNÃO pode\033[0m ser concluída!")
+            print(f"A bateria necessária para concluir a missão seria de: \033[91m{(-1)*bateriaRestante(bateriaAtual, consumoTotal)}%\033[0m")
+              
        
 except ValueError:
     print("\033[91mERRO: Valores incompatíveis, encerrando o programa.\033[0m")
