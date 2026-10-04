@@ -22,4 +22,6 @@ Digite o valor da bateria atualmente (%): <Valor tipo float>
 
 ## Observações
 
-Apesar de não ser pedido no documento do enunciado, criei um tratamento de excessões para valores fora do padrão (por exemplo string quando o input deveria ser float). 
+* Os comandos pedidos a serem explicitados, ls e pwd, se encontram apenas na img1.png
+
+* Apesar de não ser pedido no documento do enunciado, criei um tratamento de excessões para valores fora do padrão (por exemplo string quando o input deveria ser float). 
