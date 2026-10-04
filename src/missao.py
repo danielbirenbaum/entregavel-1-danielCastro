@@ -24,8 +24,8 @@ try:
     
     #Verificação de valores da bateria, consumo e duração
     bateriaOk = True if (bateriaAtual>= 0 and bateriaAtual <= 100) else False
-    duracaoOk = True if duracaoPrevista >= 0 else False
-    consumoOk = True if consumo >= 0 else False
+    duracaoOk = True if duracaoPrevista > 0 else False
+    consumoOk = True if consumo > 0 else False
     
     if (not(bateriaOk and duracaoOk and consumoOk)):
         print("\033[91mValor inválido! Verificar se os valores inseridos estão corretos\033[0m")
